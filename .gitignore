@@ -1,6 +1,8 @@
 # MongoDB gros fichiers JSON
 sources/source4_mongodb/json/
 sources/source4_mongodb/json_anomalies/
+etl/staging/raw/
+etl/staging/raw_anomalies/
 
 # Environnements Python
 venv/
