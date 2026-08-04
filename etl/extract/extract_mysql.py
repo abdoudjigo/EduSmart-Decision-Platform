@@ -7,7 +7,7 @@ import pymysql
 # CONFIGURATION
 # =====================================================
 
-HOST = "localhost"
+HOST = os.getenv("DB_HOST", "localhost")
 PORT = 3306
 DATABASE = "edusmart_learning"
 

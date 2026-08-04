@@ -7,7 +7,7 @@ import os
 # CONFIGURATION REDIS
 # =====================================================
 
-HOST = "localhost"
+HOST = os.getenv("DB_HOST", "localhost")
 PORT = 6379
 DB = 0
 

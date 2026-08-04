@@ -7,7 +7,7 @@ import os
 # CONFIGURATION MONGODB
 # =====================================================
 
-HOST = "localhost"
+HOST = os.getenv("DB_HOST", "localhost")
 PORT = 27017
 
 DATABASE = "edusmart_mobile"

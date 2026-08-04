@@ -7,7 +7,7 @@ import psycopg2
 # ==============================
 
 DB_CONFIG = {
-    "host": "localhost",
+    "host": os.getenv("DB_HOST", "localhost"),
     "port": 5432,
     "database": "edusmart_academic",
     "user": "postgres",
