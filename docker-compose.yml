@@ -36,6 +36,23 @@ services:
     volumes:
       - edusmart_mysql_data:/var/lib/mysql
 
+  etl:
+    build: .
+    container_name: edusmart-etl
+    depends_on:
+      - postgres
+      - mysql
+      - mongo
+      - redis
+    environment:
+      POSTGRES_HOST: postgres
+      MYSQL_HOST: mysql
+      MONGO_HOST: mongo
+      REDIS_HOST: redis
+    volumes:
+      - ./etl/staging:/app/etl/staging
+      - ./etl/logs:/app/etl/logs
+
 volumes:
   edusmart_redis_data:
     external: true
