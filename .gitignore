@@ -4,6 +4,17 @@ sources/source4_mongodb/json_anomalies/
 etl/staging/raw/
 etl/staging/raw_anomalies/
 
+sources/source1_postgresql/data/
+sources/source1_postgresql/data_anomalies/
+sources/source2_mysql/data/
+sources/source2_mysql/data_anomalies/
+sources/source3_csv/generated_csv/
+sources/source3_csv/generated_csv_anomalies/
+sources/source5_redis/data/
+sources/source5_redis/data_anomalies/
+etl/staging/clean/
+etl/logs/
+
 # Environnements Python
 venv/
 __pycache__/
