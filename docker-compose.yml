@@ -1,0 +1,49 @@
+services:
+  redis:
+    image: redis:latest
+    container_name: edusmart-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - edusmart_redis_data:/data
+
+  mongo:
+    image: mongo:latest
+    container_name: edusmart-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - edusmart_mongo_data:/data/db
+      - edusmart_mongo_config:/data/configdb
+
+  postgres:
+    image: postgres:latest
+    container_name: edusmart-postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - edusmart_postgres_data:/var/lib/postgresql
+
+  mysql:
+    image: mysql:latest
+    container_name: edusmart-mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    volumes:
+      - edusmart_mysql_data:/var/lib/mysql
+
+volumes:
+  edusmart_redis_data:
+    external: true
+  edusmart_mongo_data:
+    external: true
+  edusmart_mongo_config:
+    external: true
+  edusmart_postgres_data:
+    external: true
+  edusmart_mysql_data:
+    external: true
