@@ -6,6 +6,7 @@ from utils import (
     remove_duplicates,
     remove_missing_values,
     count_missing_values,
+    normalize_gender,
 )
 
 from quality_report import save_quality_report
@@ -89,11 +90,16 @@ def transform_table(source, table):
     # ------------------------------------------------------------
     # 5) NETTOYAGE : GESTION DES VALEURS MANQUANTES
     # ------------------------------------------------------------
-    df = remove_missing_values(df)
+    if source == "mongodb":
+        df = df.dropna(subset=["student_code", "timestamp", "event_type"])
+    else:
+        df = remove_missing_values(df)
 
     rows_after = len(df)
     rejected_rows = rows_before - rows_after
-
+    if "sexe" in df.columns:
+        df["sexe"] = df["sexe"].apply(normalize_gender)
+        
     # ------------------------------------------------------------
     # 6) ÉCRITURE DU FICHIER PROPRE
     # ------------------------------------------------------------

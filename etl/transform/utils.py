@@ -59,18 +59,13 @@ def normalize_gender(value):
     Uniformise le sexe.
     """
     value = clean_text(value)
-
     if value is None:
         return None
-
     value = value.upper()
-
-    if value in ["M", "MALE", "HOMME"]:
+    if value in ["M", "MALE", "HOMME", "GARÇON", "GARCON", "1"]:
         return "M"
-
-    if value in ["F", "FEMALE", "FEMME"]:
+    if value in ["F", "FEMALE", "FEMME", "FILLE", "0"]:
         return "F"
-
     return None
 
 
